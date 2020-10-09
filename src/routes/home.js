@@ -1,5 +1,7 @@
 const express = require('express')
+const multer = require('multer');
 const router = express.Router();
+const upload = multer();
 var bodyParser = require('body-parser');
 var postsCtl = require('../controllers/methods.js');
 
@@ -14,7 +16,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/', postsCtl.getPosts)
-router.post('/', postsCtl.postPosts)
+router.post('/', upload.none(), postsCtl.postPosts)
 router.put('/:id', postsCtl.updatePosts)
 router.delete('/:id', postsCtl.deletePost)
 
