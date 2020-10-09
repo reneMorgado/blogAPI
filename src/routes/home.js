@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+var bodyParser = require('body-parser');
 var postsCtl = require('../controllers/methods.js');
 
 router.use(function(req, res, next) {
@@ -8,6 +9,9 @@ router.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
     next();
 });
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/', postsCtl.getPosts)
 router.post('/', postsCtl.postPosts)
