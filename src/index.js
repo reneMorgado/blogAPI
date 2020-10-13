@@ -5,7 +5,7 @@ const apiURI = require('./routes/home')
 const app = express();
 
 app.set('port', process.env.PORT || '8000');
-app.use('/static', express.static(__dirname + 'public'));
+app.use('/static', express.static(__dirname + '/public'));
 require('./database');
 app.use('/api', apiURI);
 app.get('/', (req, res) => {
