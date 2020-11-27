@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 var blogPost = new Schema({
     cat: {
         type: String,
-        enum: ['Frontend', 'Backend', 'Released']
+        enum: ['Frontend', 'Backend', 'Released', 'Fullstack']
     },
     name: { type: String },
     description: { type: String },
