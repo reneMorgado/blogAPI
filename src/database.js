@@ -1,8 +1,19 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb+srv://reneMorgado:140727@blogrene.tybur.mongodb.net/blogRene?retryWrites=true&w=majority', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(db => console.log('Db is connected to', db.connection.host))
-    .catch(err => console.error(err))
+const mongo = 'mongodb+srv://userMERN:12345@blogrene.tybur.mongodb.net/eshop-database?retryWrites=true&w=majority'
+
+const connectDB = async() => {
+    try {
+        await mongoose.connect(mongo, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+            socketTimeoutMS: 0,
+        })
+        console.log('Connected to db')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = connectDB
